@@ -1,0 +1,322 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><title>🍁 SULFUR DROP</title><style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:Arial,sans-serif;color:#fff;background:linear-gradient(180deg,#2a1608,#140a04);background-attachment:fixed;padding-bottom:80px;min-height:100vh;overflow-x:hidden}
+#lv{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.lf{position:absolute;font-size:20px;animation:fl linear infinite;opacity:.7}
+@keyframes fl{0%{transform:translateY(-50px) rotate(0)}100%{transform:translateY(100vh) rotate(720deg) translateX(50px)}}
+.hd{background:rgba(30,15,5,.9);padding:10px;display:flex;align-items:center;gap:6px;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,150,60,.2)}
+.lg{font-size:13px;font-weight:900;background:linear-gradient(90deg,#ffd97a,#ff8a3d);-webkit-background-clip:text;-webkit-text-fill-color:transparent;white-space:nowrap}
+.hb{background:rgba(60,30,10,.8);border:1px solid rgba(255,150,60,.3);border-radius:9px;padding:6px 10px;font-size:12px;color:#ffb347;font-weight:700;cursor:pointer}
+.hb.mv{background:linear-gradient(180deg,rgba(90,50,15,.9),rgba(50,25,8,.9));color:#ffd97a;margin-left:auto;font-size:13px}
+.cn{display:inline-flex;width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#ffd97a,#c8912b 60%,#8a5a1a);box-shadow:0 0 6px rgba(255,150,60,.7);font-size:10px;align-items:center;justify-content:center;vertical-align:middle}
+.cn::after{content:'🔥';font-size:9px}
+.sc{display:none;padding:12px;position:relative;z-index:1}
+.sc.on{display:block}
+.up-c{position:relative;width:180px;height:180px;margin:10px auto 18px}
+.up-c svg{transform:rotate(-90deg)}
+.up-c .bg{fill:none;stroke:rgba(255,150,60,.1);stroke-width:10}
+.up-c .fg{fill:none;stroke:url(#g);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .5s}
+.up-c .dt{fill:#fff;filter:drop-shadow(0 0 8px #ffd97a)}
+.up-t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.up-p{font-size:38px;font-weight:900;text-shadow:0 0 20px rgba(255,180,90,.6)}
+.up-l{font-size:9px;letter-spacing:4px;color:#b8825a;margin-top:6px}
+.up-m{background:linear-gradient(180deg,#ffd97a,#ff8a3d);color:#2a1608;font-size:11px;padding:4px 10px;border-radius:10px;margin-top:8px;font-weight:900}
+.up-r{display:grid;grid-template-columns:1fr 40px 1fr;gap:6px;align-items:center;margin:16px 0 12px}
+.sl{background:linear-gradient(180deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.2);border-radius:14px;padding:14px 10px 20px;text-align:center;position:relative;min-height:110px;cursor:pointer;display:flex;flex-direction:column;justify-content:center}
+.sl.y{background:linear-gradient(180deg,rgba(90,60,20,.6),rgba(50,30,10,.75));border-color:rgba(255,200,100,.4)}
+.sl.t{background:linear-gradient(180deg,rgba(90,40,15,.6),rgba(45,20,8,.75));border-color:rgba(255,120,50,.4)}
+.sl-l{font-size:9px;letter-spacing:2px;color:#b8825a;margin-bottom:6px;font-weight:700}
+.sl-i{font-size:42px}
+.sl-n{font-size:11px;color:#ffb347;margin-top:4px;font-weight:600}
+.sl-v{position:absolute;bottom:8px;left:12px;font-size:11px;color:#ffd97a;font-weight:800;display:flex;gap:4px;align-items:center}
+.sl-b{position:absolute;bottom:0;left:0;right:0;height:3px}
+.sl.y .sl-b{background:linear-gradient(90deg,#ffd97a,#ff9d3d)}
+.sl.t .sl-b{background:linear-gradient(90deg,#ff8a3d,#c94a1a)}
+.ar{position:relative;width:32px;height:32px;animation:ap 1.5s ease-in-out infinite}
+.ar::before{content:'';position:absolute;top:15px;left:0;width:22px;height:3px;background:linear-gradient(90deg,transparent,#ffd97a,#ff8a3d);border-radius:2px}
+.ar::after{content:'';position:absolute;top:8px;right:0;border-top:8px solid transparent;border-bottom:8px solid transparent;border-left:12px solid #ff8a3d}
+@keyframes ap{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.up-b{width:100%;padding:16px;border:none;border-radius:14px;background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;font-weight:900;font-size:15px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;margin-top:10px}
+.up-b:disabled{background:rgba(50,25,8,.7);color:#6a4a3a}
+.st{font-size:10px;letter-spacing:3px;color:#b8825a;text-transform:uppercase;padding:12px 4px 8px;font-weight:800}
+.cc{background:linear-gradient(135deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.15);border-radius:14px;padding:12px;margin-bottom:10px}
+.cc.hw{border-color:rgba(180,60,220,.5);background:linear-gradient(135deg,rgba(80,30,90,.7),rgba(40,10,60,.8))}
+.ch{display:flex;align-items:center;gap:10px}
+.ci{width:44px;height:44px;border-radius:11px;background:linear-gradient(135deg,rgba(90,50,20,.8),rgba(50,25,8,.8));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.cc.hw .ci{background:linear-gradient(135deg,rgba(120,40,150,.8),rgba(60,20,90,.8))}
+.ct{font-weight:800;font-size:13px;color:#ffe6c2}
+.ct .tg{font-size:8px;background:linear-gradient(90deg,#ff8a3d,#c94a1a);color:#fff;padding:2px 6px;border-radius:6px;margin-left:6px;font-weight:800}
+.ct .tg.hw{background:linear-gradient(90deg,#a020c0,#6010a0)}
+.cp{font-size:14px;color:#ffd97a;font-weight:800;margin-top:8px;display:flex;align-items:center;gap:6px}
+.cp span{color:#6a4a3a;text-decoration:line-through;font-size:11px}
+.cb{background:linear-gradient(180deg,#ff9d3d,#c94a1a);border:none;color:#fff;font-weight:900;padding:9px 18px;border-radius:10px;font-size:11px;text-transform:uppercase;cursor:pointer;margin-left:auto}
+.cc.hw .cb{background:linear-gradient(180deg,#a020c0,#6010a0)}
+.ig{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.ic{background:linear-gradient(180deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.15);border-radius:14px;padding:12px;text-align:center}
+.ic.r1{border-color:rgba(180,140,80,.5)}.ic.r2{border-color:rgba(120,200,100,.5)}.ic.r3{border-color:rgba(80,140,255,.5)}.ic.r4{border-color:rgba(192,132,252,.6)}.ic.r5{border-color:rgba(255,80,180,.6)}.ic.r6{border-color:rgba(255,80,80,.6)}.ic.r7{border-color:rgba(255,215,0,.7)}.ic.r8{border-color:rgba(255,255,255,.7);box-shadow:0 0 20px rgba(255,255,255,.5)}
+.ii{font-size:42px;margin:6px 0}
+.in{font-size:10px;color:#ffb347;margin-bottom:4px}
+.iv{font-size:13px;color:#ffd97a;font-weight:800;margin-bottom:8px;display:flex;justify-content:center;gap:4px;align-items:center}
+.ib{width:100%;padding:8px;border-radius:8px;border:none;font-size:10px;font-weight:800;text-transform:uppercase;cursor:pointer;background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;margin-top:4px}
+.ib.o{background:rgba(50,25,8,.7);border:1px solid rgba(255,150,60,.3);color:#ffb347}
+.hw-h{background:linear-gradient(135deg,rgba(120,40,150,.6),rgba(40,10,60,.8));border:1px solid rgba(200,80,255,.4);border-radius:16px;padding:16px;margin-bottom:10px;position:relative}
+.hw-t2{font-size:24px;font-weight:900;background:linear-gradient(180deg,#ffd97a,#ff5500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:4px 0 6px}
+.hw-ph{display:flex;justify-content:space-between;margin-bottom:6px}
+.hw-l{font-size:18px;font-weight:900;color:#ffd97a}
+.hw-bar{height:14px;background:rgba(60,20,90,.7);border-radius:7px;overflow:hidden}
+.hw-f{height:100%;background:linear-gradient(90deg,#ff5500,#a020c0);transition:width .4s}
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rw{background:linear-gradient(135deg,rgba(60,30,80,.7),rgba(30,10,50,.9));border:1px solid rgba(200,80,255,.2);border-radius:12px;padding:10px 6px;text-align:center}
+.rw.c{border-color:rgba(60,200,100,.5);background:linear-gradient(135deg,rgba(20,60,40,.6),rgba(10,40,25,.8))}
+.rw.n{border-color:#ffd97a;box-shadow:0 0 16px rgba(255,215,100,.4)}
+.rw-l{font-size:9px;color:#c890ff;margin-bottom:4px}
+.rw-i{font-size:26px}
+.rw-n2{font-size:9px;color:#c890ff;margin:4px 0;min-height:24px}
+.rw-v{font-size:11px;color:#ffd97a;font-weight:700;display:flex;justify-content:center;gap:3px;align-items:center}
+.rw-b{width:100%;padding:6px;border-radius:6px;border:none;font-size:9px;font-weight:700;text-transform:uppercase;cursor:pointer;margin-top:4px}
+.rw-b.g{background:linear-gradient(180deg,#a020c0,#6010a0);color:#fff}
+.rw-b.d{background:linear-gradient(180deg,#2ecc71,#1e8a4a);color:#fff}
+.rw-b.l{background:rgba(40,20,60,.8);color:#6a4a7a}
+.sh-h{background:linear-gradient(135deg,rgba(200,80,20,.5),rgba(60,20,10,.8));border:1px solid rgba(255,150,60,.4);border-radius:16px;padding:16px;margin-bottom:12px}
+.sh-t{font-size:22px;font-weight:900;background:linear-gradient(180deg,#ffd97a,#ff5500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:4px 0 6px}
+.br{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}
+.bt{background:rgba(50,25,8,.7);border:1px solid rgba(255,150,60,.2);color:#b8825a;padding:12px 4px;border-radius:10px;font-size:13px;font-weight:800;cursor:pointer;text-align:center}
+.bt.on{background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;border-color:#ffd97a}
+.bt.dis{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.sp{width:100%;padding:18px;border:none;border-radius:14px;background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;font-weight:900;font-size:16px;text-transform:uppercase;cursor:pointer;margin-top:10px}
+.sp:disabled{background:rgba(50,25,8,.7);color:#6a4a3a}
+.gw{display:none}.gw.on{display:block}
+.gt{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-bottom:12px}
+.pb{background:linear-gradient(180deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.25);border-radius:12px;padding:10px;text-align:center}
+.pb.me{border-color:rgba(100,200,255,.5)}
+.pb.en{border-color:rgba(255,80,80,.5)}
+.pa{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ffd97a,#ff8a3d);display:flex;align-items:center;justify-content:center;font-size:16px;margin:0 auto 4px;color:#2a1608;font-weight:900}
+.pb.me .pa{background:linear-gradient(135deg,#60a5fa,#2563eb);color:#fff}
+.pb.en .pa{background:linear-gradient(135deg,#ef4444,#991b1b);color:#fff}
+.pn{font-size:10px;color:#ffb347}
+.ps{font-size:22px;font-weight:900;color:#ffd97a}
+.tm{font-size:34px;font-weight:900;color:#ffd97a;text-align:center;min-width:70px}
+.tm.w{color:#ff5555;animation:pl .5s infinite}
+@keyframes pl{50%{transform:scale(1.1)}}
+.fd{background:linear-gradient(135deg,rgba(80,40,15,.6),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.3);border-radius:16px;padding:10px;margin-bottom:12px}
+.gr{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tl{aspect-ratio:1;background:linear-gradient(180deg,rgba(120,70,30,.9),rgba(60,30,10,.9));border:2px solid rgba(180,110,50,.4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:32px;cursor:pointer;user-select:none}
+.tl.op{cursor:default;background:rgba(50,25,8,.5);font-size:28px}
+.tl.pk{background:radial-gradient(circle,rgba(255,150,50,.4),rgba(120,40,10,.8));border-color:#ff8a3d}
+.tl.em{background:rgba(30,15,5,.6);opacity:.5}
+.pp{background:linear-gradient(135deg,rgba(60,20,20,.6),rgba(30,10,10,.8));border:1px solid rgba(255,80,80,.3);border-radius:12px;padding:10px;margin-top:10px}
+.pp-l{font-size:10px;color:#ff8a8a;letter-spacing:2px;font-weight:700;margin-bottom:6px}
+.pp-b{height:6px;background:rgba(60,20,20,.7);border-radius:3px;overflow:hidden}
+.pp-f{height:100%;background:linear-gradient(90deg,#ef4444,#991b1b);transition:width .3s}
+.dh{background:linear-gradient(135deg,rgba(200,80,20,.5),rgba(60,30,10,.8));border:1px solid rgba(255,180,80,.4);border-radius:16px;padding:16px;margin-bottom:12px}
+.dt2{font-size:20px;font-weight:900;background:linear-gradient(180deg,#ffd97a,#ff5500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:4px 0 6px}
+.dc{display:flex;align-items:center;gap:6px;font-size:12px;color:#ffd97a;font-weight:800}
+.dc b{background:rgba(60,30,10,.8);border:1px solid rgba(255,150,60,.3);padding:4px 8px;border-radius:6px;font-family:monospace}
+.dp{background:rgba(30,15,5,.7);border:1px solid rgba(255,150,60,.2);border-radius:10px;padding:10px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.dp-b{flex:1;height:10px;background:rgba(60,30,10,.7);border-radius:5px;overflow:hidden}
+.dp-f{height:100%;background:linear-gradient(90deg,#ff9d3d,#ffd97a);transition:width .4s}
+.dp-t{font-size:12px;color:#ffd97a;font-weight:800}
+.dk{background:linear-gradient(135deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.2);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.dk.d{border-color:rgba(46,204,113,.5);background:linear-gradient(135deg,rgba(20,60,40,.6),rgba(10,40,25,.8))}
+.dk.c{opacity:.6}
+.dk-i{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,rgba(90,50,20,.8),rgba(50,25,8,.8));display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dk-n{flex:1;min-width:0}
+.dk-t{font-weight:800;font-size:12px;color:#ffe6c2}
+.dk-r{font-size:10px;color:#ffd97a;margin-top:2px;display:flex;gap:3px;align-items:center;font-weight:700}
+.dk-b{height:5px;background:rgba(60,30,10,.7);border-radius:3px;overflow:hidden;margin-top:6px}
+.dk-f{height:100%;background:linear-gradient(90deg,#ff9d3d,#ffd97a)}
+.dk-btn{background:linear-gradient(180deg,#ff9d3d,#c94a1a);border:none;color:#fff;font-weight:900;padding:8px 12px;border-radius:9px;font-size:10px;text-transform:uppercase;cursor:pointer;flex-shrink:0}
+.dk-btn.cl{background:linear-gradient(180deg,#2ecc71,#1e8a4a);animation:pc 1.5s infinite}
+.dk-btn.lk{background:rgba(50,25,8,.7);color:#6a4a3a;cursor:default}
+@keyframes pc{50%{box-shadow:0 0 12px rgba(46,204,113,.9)}}
+.help-h{background:linear-gradient(135deg,rgba(50,80,180,.5),rgba(20,30,80,.8));border:1px solid rgba(100,150,255,.4);border-radius:16px;padding:16px;margin-bottom:12px}
+.help-t{font-size:22px;font-weight:900;background:linear-gradient(180deg,#c4b5fd,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:4px 0 6px}
+.sr{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:12px 0}
+.so{background:linear-gradient(180deg,rgba(50,80,180,.6),rgba(20,30,80,.8));border:2px solid rgba(100,150,255,.3);border-radius:12px;padding:12px 4px;text-align:center;cursor:pointer}
+.so.on{border-color:#ffd97a;background:linear-gradient(180deg,rgba(255,150,60,.4),rgba(120,60,20,.6))}
+.so-i{font-size:20px}
+.so-v{font-size:13px;font-weight:900;color:#ffd97a}
+.sb{width:100%;padding:14px;border:none;border-radius:14px;background:linear-gradient(180deg,#60a5fa,#2563eb);color:#fff;font-weight:900;font-size:14px;text-transform:uppercase;cursor:pointer;margin-top:6px}
+.sb.s{background:rgba(50,80,180,.4);border:1px solid rgba(100,150,255,.3);margin-top:8px}
+.ph{background:linear-gradient(135deg,rgba(90,60,20,.6),rgba(50,30,10,.7));border:1px solid rgba(255,200,100,.3);border-radius:16px;padding:20px;text-align:center;margin-bottom:12px}
+.pa2{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#ffd97a,#ff8a3d);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 12px;color:#2a1608;font-weight:900}
+.pn2{font-size:18px;font-weight:900;color:#ffe6c2}
+.ph2{font-size:11px;color:#b8825a}
+.pst{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.stt{background:rgba(30,15,5,.7);border:1px solid rgba(255,150,60,.2);border-radius:12px;padding:12px;text-align:center}
+.sv{font-size:20px;font-weight:900;color:#ffd97a;display:flex;justify-content:center;gap:4px;align-items:center}
+.sl2{font-size:10px;color:#b8825a;margin-top:2px}
+.lbr{display:flex;align-items:center;gap:12px;padding:12px;background:linear-gradient(135deg,rgba(60,30,12,.7),rgba(30,15,5,.7));border:1px solid rgba(255,150,60,.15);border-radius:12px;margin-bottom:8px}
+.lbr.me{border-color:#ffd97a;box-shadow:0 0 15px rgba(255,200,100,.3)}
+.lbr-r{width:32px;height:32px;border-radius:50%;background:rgba(50,25,8,.9);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#ffd97a}
+.lbr:nth-child(1) .lbr-r{background:linear-gradient(180deg,#ffd97a,#ff9d3d);color:#2a1608}
+.lbr:nth-child(2) .lbr-r{background:linear-gradient(180deg,#e0e0e0,#a0a0a0);color:#2a1608}
+.lbr:nth-child(3) .lbr-r{background:linear-gradient(180deg,#cd7f32,#a05a1a);color:#2a1608}
+.lbr-a{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#ff9d3d,#c94a1a);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
+.lbr-n{font-size:13px;font-weight:700;color:#ffe6c2}
+.lbr-m{margin-left:auto;font-size:14px;color:#ffd97a;font-weight:900;display:flex;gap:4px;align-items:center}
+.tk{background:linear-gradient(135deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:1px solid rgba(255,150,60,.15);border-radius:14px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.tk-i{width:46px;height:46px;border-radius:11px;background:linear-gradient(135deg,#2aabee,#1e88c7);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.tk-n{flex:1}
+.tk-t{font-weight:800;font-size:13px;color:#ffe6c2}
+.tk-d{font-size:10px;color:#b8825a;margin-top:2px}
+.tk-b{background:linear-gradient(180deg,#ff9d3d,#c94a1a);border:none;color:#fff;font-weight:900;padding:9px 14px;border-radius:10px;font-size:11px;text-transform:uppercase;cursor:pointer;flex-shrink:0}
+.tk-b.d{background:linear-gradient(180deg,#2ecc71,#1e8a4a)}
+.tk-b.b{background:linear-gradient(180deg,#2aabee,#1e88c7)}
+.pi{width:100%;padding:14px;border-radius:12px;border:1px solid rgba(255,150,60,.3);background:rgba(50,25,8,.7);color:#fff;font-size:14px;margin-bottom:10px;text-align:center;text-transform:uppercase;font-weight:700}
+.pb2{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;font-weight:900;font-size:13px;text-transform:uppercase;cursor:pointer}
+.md{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.md.on{display:flex}
+.bx{background:linear-gradient(180deg,#3a1e0c,#1a0d05);border:1px solid rgba(255,150,60,.4);border-radius:20px;padding:24px;text-align:center;max-width:340px;width:100%}
+.bx.pk{max-width:420px}
+.bx-i{font-size:60px;margin:10px 0;animation:pp2 .5s}
+@keyframes pp2{0%{transform:scale(0) rotate(-180deg);opacity:0}100%{transform:scale(1) rotate(0);opacity:1}}
+.bx-n{font-size:16px;font-weight:900;margin:10px 0}
+.bx-r{font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;font-weight:800}
+.bx-b{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(180deg,#ff9d3d,#c94a1a);color:#fff;font-weight:900;font-size:13px;text-transform:uppercase;cursor:pointer;margin-top:8px}
+.bx-b.o{background:rgba(50,25,8,.7);border:1px solid rgba(255,150,60,.3);color:#ffb347}
+.pgr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;max-height:60vh;overflow-y:auto}
+.pgi{background:linear-gradient(180deg,rgba(60,30,12,.9),rgba(30,15,5,.9));border:2px solid rgba(255,150,60,.2);border-radius:12px;padding:10px 4px;text-align:center;cursor:pointer}
+.pgi.r1{border-color:rgba(180,140,80,.5)}.pgi.r2{border-color:rgba(120,200,100,.5)}.pgi.r3{border-color:rgba(80,140,255,.5)}.pgi.r4{border-color:rgba(192,132,252,.6)}.pgi.r5{border-color:rgba(255,80,180,.6)}.pgi.r6{border-color:rgba(255,80,80,.6)}.pgi.r7{border-color:rgba(255,215,0,.7)}.pgi.r8{border-color:rgba(255,255,255,.7)}
+.pgi-i{font-size:32px}
+.pgi-n{font-size:9px;color:#ffb347;margin-top:4px}
+.pgi-v{font-size:11px;color:#ffd97a;font-weight:800;margin-top:2px;display:flex;justify-content:center;gap:3px;align-items:center}
+.mt{position:fixed;inset:0;background:linear-gradient(180deg,#1e0f05,#0d0603);display:none;align-items:center;justify-content:center;z-index:400;padding:20px;text-align:center}
+.mt.on{display:flex}
+.mt-i{font-size:80px;animation:sp2 3s linear infinite;display:inline-block}
+@keyframes sp2{100%{transform:rotate(360deg)}}
+.mt-h{font-size:20px;font-weight:900;margin:20px 0 10px;background:linear-gradient(90deg,#ffd97a,#ff8a3d);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.mt-tm{font-size:40px;font-weight:900;color:#ffd97a;font-family:monospace;letter-spacing:5px;margin:16px 0}
+.mt-b{height:8px;background:rgba(255,150,60,.15);border-radius:4px;overflow:hidden;margin-top:16px}
+.mt-f{height:100%;background:linear-gradient(90deg,#ff8a3d,#ffd97a);transition:width 1s}
+.nv{position:fixed;bottom:0;left:0;right:0;background:rgba(20,10,4,.96);border-top:1px solid rgba(255,150,60,.15);display:flex;justify-content:space-around;padding:6px 2px 10px;z-index:50;overflow-x:auto}
+.nv::-webkit-scrollbar{display:none}
+.nvi{flex:1;min-width:42px;text-align:center;color:#6a4a3a;font-size:8px;padding:4px 2px;cursor:pointer;font-weight:600;white-space:nowrap}
+.nvi .i2{font-size:18px;display:block;margin-bottom:2px;filter:grayscale(1);opacity:.6;position:relative}
+.nvi.on{color:#ffb347}
+.nvi.on .i2{filter:grayscale(0);opacity:1}
+.nb{position:absolute;top:-4px;right:-8px;background:#ff3d3d;color:#fff;font-size:8px;font-weight:900;padding:1px 4px;border-radius:8px;min-width:14px;text-align:center}
+.ts{position:fixed;top:70px;left:50%;transform:translateX(-50%) translateY(-20px);background:linear-gradient(180deg,#3a1e0c,#1a0d05);border:1px solid #ffd97a;color:#ffd97a;padding:12px 20px;border-radius:12px;font-size:13px;font-weight:800;z-index:500;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap;max-width:90vw}
+.ts.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style></head><body><div id="lv"></div>
+
+<div class="login" id="loginScreen"><div class="login-box">
+<div class="login-logo">🍁 SULFUR DROP 🍁</div>
+<div class="login-sub">ВОЙДИ В ИГРУ</div>
+<button class="login-btn" onclick="loginTelegram()">✈️ Войти через Telegram</button>
+<input class="login-input" id="loginName" placeholder="Или введи имя" maxlength="20">
+<button class="login-btn" style="background:linear-gradient(180deg,#ff9d3d,#c94a1a)" onclick="loginManual()">🎮 Играть</button>
+</div></div>
+
+<div class="hd">
+<div class="lg">🍁 SULFUR DROP</div>
+<button class="hb mv"><span class="cn"></span> <span id="money">500</span></button>
+<button class="hb" onclick="toggleSound()" id="soundBtn">🔊</button>
+<button class="hb" onclick="toggleMusic()" id="musicBtn">🎵</button>
+</div>
+
+<div class="sc on" id="s-up">
+<div class="up-c"><svg width="180" height="180" viewBox="0 0 210 210">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffd97a"/><stop offset="60%" stop-color="#ff9d3d"/><stop offset="100%" stop-color="#c94a1a"/></linearGradient></defs>
+<circle class="bg" cx="105" cy="105" r="90"/><circle class="fg" id="upFg" cx="105" cy="105" r="90" stroke-dasharray="565.5" stroke-dashoffset="565.5"/><circle class="dt" id="upDot" cx="105" cy="15" r="5"/></svg>
+<div class="up-t"><div class="up-p" id="upPct">—</div><div class="up-l">ШАНС</div><div class="up-m" id="upMult">—</div></div></div>
+<div class="up-r">
+<div class="sl y" onclick="switchTo('inv')"><div class="sl-l">ВАШ ПРЕДМЕТ</div><div class="sl-i" id="youIcon">➕</div><div class="sl-n" id="youName">Выбрать</div><div class="sl-v"><span class="cn"></span> <span id="youVal">0</span></div><div class="sl-b"></div></div>
+<div style="display:flex;align-items:center;justify-content:center"><div class="ar"></div></div>
+<div class="sl t" onclick="openPicker()"><div class="sl-l">ЦЕЛЬ</div><div class="sl-i" id="tgtIcon">➕</div><div class="sl-n" id="tgtName">Выбрать</div><div class="sl-v"><span class="cn"></span> <span id="tgtVal">0</span></div><div class="sl-b"></div></div>
+</div>
+<button class="up-b" id="upBtn" onclick="spinUpgrade()" disabled>Апгрейд</button>
+</div>
+
+<div class="sc" id="s-cases"><div class="st">🎃 Хэллоуин</div><div id="hwList"></div><div class="st">📦 Магазин</div><div id="casesList"></div></div>
+
+<div class="sc" id="s-inv"><div class="st">Инвентарь · <span id="invCount">0</span></div><div class="ig" id="invGrid"></div></div>
+
+<div class="sc" id="s-shovel">
+<div id="shovelLobby">
+<div class="sh-h"><div style="font-size:10px;letter-spacing:3px;color:#ffb347;font-weight:700">🍁 ИГРОВОЙ РЕЖИМ</div><div class="sh-t">ЛОПАТА</div><div style="font-size:11px;color:#ffb347">Копай тыквы! Больше тыкв — забираешь банк. 20 сек.</div></div>
+<div class="st">Ставка</div>
+<div class="br"><div class="bt" data-b="50">50</div><div class="bt" data-b="100">100</div><div class="bt" data-b="500">500</div><div class="bt on" data-b="1000">1000</div></div>
+<button class="sp" onclick="startShovelGame()">🍁 НАЧАТЬ БОЙ</button>
+</div>
+<div class="gw" id="gameWrap">
+<div class="gt">
+<div class="pb me"><div class="pa" id="meAvatar">?</div><div class="pn" id="meName">Ты</div><div class="ps" id="meScore">0</div></div>
+<div class="tm" id="gameTimer">20</div>
+<div class="pb en"><div class="pa" id="enemyAvatar">?</div><div class="pn" id="enemyName">Враг</div><div class="ps" id="enemyScore">0</div></div>
+</div>
+<div class="fd"><div class="gr" id="gameGrid"></div></div>
+<div class="pp"><div class="pp-l">ПРОГРЕСС ПРОТИВНИКА</div><div class="pp-b"><div class="pp-f" id="oppFill"></div></div></div>
+</div>
+</div>
+
+<div class="sc" id="s-hw">
+<div class="hw-h">
+<div style="font-size:10px;letter-spacing:3px;color:#c890ff;font-weight:700">🎃 ХЭЛЛОУИН-ПАСС</div>
+<div class="hw-t2">СЕЗОН УЖАСОВ</div>
+<div style="font-size:11px;color:#c890ff;margin-bottom:14px">1 прокрутка = 1 XP + XP с заданий</div>
+<div class="hw-ph"><div class="hw-l">УР. <span id="hwLvl">1</span> <small style="font-size:12px;color:#a078b0">/ 12</small></div><div style="font-size:11px;color:#c890ff"><span id="hwXp">0</span> / <span id="hwNeed">2</span> XP</div></div>
+<div class="hw-bar"><div class="hw-f" id="hwFill"></div></div>
+</div>
+<div class="st">Награды</div><div class="rg" id="hwRewards"></div>
+<div class="st" style="margin-top:16px">🎯 Ежедневные пасса</div><div id="bpDailyList"></div>
+<div class="st" style="margin-top:14px">🏆 Еженедельные пасса</div><div id="bpWeeklyList"></div>
+</div>
+
+<div class="sc" id="s-top"><div class="st">🏆 Топ 10</div><div id="lbList"></div></div>
+
+<div class="sc" id="s-tasks">
+<div class="st">📅 Ежедневные</div>
+<div class="dh"><div style="font-size:10px;letter-spacing:3px;color:#ffb347;font-weight:700">НЕДЕЛЯ 1 · ДЕНЬ <span id="dailyDay">1</span></div><div class="dt2" id="dailyTheme">ПУТЬ КОПАТЕЛЯ</div><div class="dc">⏰ До обновления: <b id="dailyCountdown">00:00:00</b></div></div>
+<div class="dp"><span style="font-size:18px">🎯</span><div class="dp-b"><div class="dp-f" id="dailyProgFill"></div></div><div class="dp-t" id="dailyProgTxt">0 / 5</div></div>
+<div id="dailyTasksList"></div>
+<div class="st" style="margin-top:14px">📋 Подписки</div>
+<div class="tk"><div class="tk-i">✈️</div><div class="tk-n"><div class="tk-t">Oxide Vankirn</div><div class="tk-d">Награда 200</div></div><button class="tk-b b" id="task1Btn" onclick="openTask('t1','https://t.me/Oxide_Vankirn')">Подписаться</button></div>
+<div class="tk"><div class="tk-i">✈️</div><div class="tk-n"><div class="tk-t">Oxidetrawa</div><div class="tk-d">Награда 200</div></div><button class="tk-b b" id="task2Btn" onclick="openTask('t2','https://t.me/oxidetrawa')">Подписаться</button></div>
+<div class="st">🎁 Промокоды</div>
+<div class="pi" id="promoInput" contenteditable="true"></div>
+<button class="pb2" onclick="activatePromo()">Активировать</button>
+</div>
+
+<div class="sc" id="s-help">
+<div class="help-h"><div style="font-size:10px;letter-spacing:3px;color:#8ab4ff;font-weight:700">💎 ПОДДЕРЖКА</div><div class="help-t">ПОМОЧЬ ПРОЕКТУ</div><div style="font-size:11px;color:#8ab4ff">Отправь Telegram Stars — мы используем их для развития игры!</div></div>
+<div class="st">Количество звёзд</div>
+<div class="sr">
+<div class="so on" data-stars="10"><div class="so-i">⭐</div><div class="so-v">10</div></div>
+<div class="so" data-stars="20"><div class="so-i">⭐</div><div class="so-v">20</div></div>
+<div class="so" data-stars="30"><div class="so-i">⭐</div><div class="so-v">30</div></div>
+<div class="so" data-stars="40"><div class="so-i">⭐</div><div class="so-v">40</div></div>
+<div class="so" data-stars="50"><div class="so-i">⭐</div><div class="so-v">50</div></div>
+</div>
+<button class="sb" onclick="sendStars()">⭐ Отправить <span id="starsAmount">10</span> звёзд</button>
+<button class="sb s" onclick="openPlsuy()">✈️ Написать @plsuy</button>
+<div style="margin-top:12px;font-size:11px;color:#8ab4ff;text-align:center;padding:10px;background:rgba(20,30,80,.5);border-radius:10px" id="supportersList">Спасибо всем, кто поддерживает! 💜</div>
+</div>
+
+<div class="sc" id="s-prof">
+<div class="ph"><div class="pa2" id="profAvatar">?</div><div class="pn2" id="profName">Игрок</div><div class="ph2" id="profHandle">@unknown</div></div>
+<div class="pst"><div class="stt"><div class="sv"><span class="cn"></span> <span id="profMoney">500</span></div><div class="sl2">МОНЕТЫ</div></div><div class="stt"><div class="sv" id="profItems">0</div><div class="sl2">🎒 ПРЕДМЕТЫ</div></div></div>
+<div class="cc" style="margin-top:12px"><div class="ct">🔄 Сбросить прогресс</div><button class="ib o" style="margin-top:12px;padding:12px;font-size:11px" onclick="resetGame()">Сбросить</button></div>
+</div>
+
+<div class="nv">
+<div class="nvi" data-s="cases"><span class="i2">📦</span>Кейсы</div>
+<div class="nvi on" data-s="up"><span class="i2">⬆️</span>Апгрейд</div>
+<div class="nvi" data-s="inv"><span class="i2">🎒</span>Инвентарь</div>
+<div class="nvi" data-s="shovel"><span class="i2">🍁</span>Лопата</div>
+<div class="nvi" data-s="hw"><span class="i2">🎃</span>Пасс</div>
+<div class="nvi" data-s="top"><span class="i2">🏆</span>Топ</div>
+<div class="nvi" data-s="tasks"><span class="i2">📋</span>Задания<span class="nb" id="dailyBadge" style="display:none">0</span></div>
+<div class="nvi" data-s="help"><span class="i2">💎</span>Помощь</div>
+<div class="nvi" data-s="prof"><span class="i2">👤</span>Профиль</div>
+</div>
+
+<div class="md" id="dropModal"><div class="bx"><div class="bx-i" id="dropIcon">🎁</div><div class="bx-n" id="dropName">Предмет</div><div class="bx-r" id="dropRar">Обычный</div><button class="bx-b" onclick="closeDrop()">Забрать</button></div></div>
+
+<div class="md" id="pickModal"><div class="bx pk"><div style="font-size:16px;font-weight:900;color:#ffd97a;letter-spacing:2px;margin-bottom:8px">ВЫБЕРИ ЦЕЛЬ</div><div class="pgr" id="pickGrid"></div><button class="bx-b o" onclick="closePicker()">Отмена</button></div></div>
+
+<div class="md" id="resultModal"><div class="bx"><div style="font-size:60px;margin:10px 0" id="resultIcon">🏆</div><div style="font-size:22px;font-weight:900;margin:10px 0" id="resultTitle">ПОБЕДА!</div><div style="font-size:14px;color:#ffb347;margin-bottom:16px" id="resultDesc">+2000</div><button class="bx-b" onclick="closeResult()">Забрать</button></div></div>
+
+<div class="mt" id="maint"><div><div class="mt-i">⚙️</div><div class="mt-h">ТЕХ.РАБОТЫ</div><div style="font-size:13px;color:#b8825a">Сервер обновляется</div><div class="mt-tm" id="maintTimer">20:00</div><div class="mt-b"><div class="mt-f" id="maintFill"></div></div><div style="font-size:11px;color:#6a4a3a;margin-top:14px">Ежедневно 20:00–20:21</div></div></div>
+
+<div class="ts" id="toast"></div>
